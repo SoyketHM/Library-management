@@ -33,6 +33,9 @@
         "books-loan": [
             "GET",
             "PUT"
+        ],
+        "export": [
+            "*"
         ]
     },
     "member": {
