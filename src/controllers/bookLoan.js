@@ -32,7 +32,7 @@ const { createResponse }    = require('../utils/responseGenerate');
  * /api/books-loan:
  *   post:
  *     tags: [books-loan]
- *     description: Create a new loan book
+ *     description: Create a new books loan
  *     produces:
  *       - application/json
  *     parameters: 
@@ -40,7 +40,7 @@ const { createResponse }    = require('../utils/responseGenerate');
  *       description: User token
  *       in:  header
  *     - in:  body
- *       name: Loan Book Data
+ *       name: Books loan Data
  *       schema:
  *         $ref: '#/definitions/BookLoan'
  *     responses:
@@ -86,7 +86,7 @@ module.exports.createLoan = async (req, res, next) => {
  * /api/books-loan:
  *   get:
  *     tags: [books-loan]
- *     description: Get all loan book
+ *     description: Get all books loan
  *     produces:
  *       - application/json
  *     parameters: 
@@ -148,7 +148,7 @@ module.exports.getLoans = async (req, res, next) => {
  * /api/books-loan/{id}:
  *   get:
  *     tags: [books-loan]
- *     description: Update loan book id
+ *     description: Update books loan id
  *     produces:
  *       - application/json
  *     parameters: 
@@ -156,7 +156,7 @@ module.exports.getLoans = async (req, res, next) => {
  *         description: User token
  *         in:  header
  *       - name: id
- *         description: Loan book id
+ *         description: Books loan id
  *         in:  path
  *         type: string
  *     responses:
@@ -205,7 +205,7 @@ module.exports.getLoanById = async (req, res, next) => {
  * /api/books-loan/{id}:
  *   put:
  *     tags: [books-loan]
- *     description: Update loan book id
+ *     description: Update books loan id
  *     produces:
  *       - application/json
  *     parameters: 
@@ -213,11 +213,11 @@ module.exports.getLoanById = async (req, res, next) => {
  *       description: User token
  *       in:  header
  *     - name: id
- *       description: Loan book id
+ *       description: Books loan id
  *       in:  path
  *       type: string
  *     - in:  body
- *       name: Loan Book Data
+ *       name: Books loan Data
  *       schema:
  *         $ref: '#/definitions/BookLoan'
  *     responses:
@@ -266,7 +266,7 @@ module.exports.updateLoanById = async (req, res, next) => {
  * /api/books-loan/{id}:
  *   delete:
  *     tags: [books-loan]
- *     description: Delete loan book id
+ *     description: Delete books loan id
  *     produces:
  *       - application/json
  *     parameters: 
@@ -274,7 +274,7 @@ module.exports.updateLoanById = async (req, res, next) => {
  *       description: User token
  *       in:  header
  *     - name: id
- *       description: Loan book id
+ *       description: Books loan id
  *       in:  path
  *       type: string
  *     responses:
@@ -307,31 +307,23 @@ module.exports.deleteLoanById = async (req, res, next) => {
 /**
  * @swagger
  *
- * /api/books-loan/{id}:
- *   delete:
+ * /api/export:
+ *   get:
  *     tags: [books-loan]
- *     description: Delete loan book id
- *     produces:
- *       - application/json
+ *     description: Export book loan list
  *     parameters: 
  *     - name: token
  *       description: User token
  *       in:  header
- *     - name: id
- *       description: Loan book id
- *       in:  path
- *       type: string
  *     responses:
  *       200:
  *         description: OK
- *         schema: 
- *           $ref: '#/definitions/BookLoan'
  *         examples: 
  *           application/json: 
  *             { 
  *               "error": false,
  *               "data": null,
- *               "message": "loan deleted successfully"
+ *               "message": "books loan list export successfully"
  *             } 
  *         
  */
@@ -345,5 +337,5 @@ module.exports.exportLoan = async (req, res, next) => {
 	if(!status) {
 		return res.status(200).json(createResponse(null, 'books loan not found'));
 	}
-	return res.status(200).json(createResponse(status, 'books loan export successfully'));
+	return res.status(200).json(createResponse(status, 'books loan list export successfully'));
 };
