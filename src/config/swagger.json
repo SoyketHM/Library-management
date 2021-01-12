@@ -1,0 +1,35 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "title": "Library API",
+            "version": "1.0.0",
+            "description": "Simple api for library management"
+        },
+        "basePath": "/",
+        "tags": [
+            {
+                "name": "login"
+            },
+            {
+                "name": "signup"
+            },
+            {
+                "name": "users",
+                "description": "Everything about users"
+            },
+            {
+                "name": "authors",
+                "description": "Everything about authors"
+            },
+            {
+                "name": "books",
+                "description": "Everything about books"
+            },
+            {
+                "name": "books-loan",
+                "description": "Everything about books loan"
+            }
+        ]
+    },
+    "apis": ["./src/controllers/*.js"]
+}

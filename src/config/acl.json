@@ -1,0 +1,50 @@
+{
+    "admin": {
+        "signup": [
+            "*"
+        ],
+        "users": [
+            "*"
+        ],
+        "books": [
+            "*"
+        ],
+        "authors": [
+            "*"
+        ],
+        "books-loan": [
+            "*"
+        ],
+        "export": [
+            "*"
+        ]
+    },
+    "librarian": {
+        "users": [
+            "GET",
+            "PUT"
+        ],
+        "books": [
+            "*"
+        ],
+        "authors": [
+            "*"
+        ],
+        "books-loan": [
+            "GET",
+            "PUT"
+        ]
+    },
+    "member": {
+        "books": [
+            "GET"
+        ],
+        "authors": [
+            "GET"
+        ],
+        "books-loan": [
+            "GET",
+            "POST"
+        ]
+    }
+}
