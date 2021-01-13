@@ -328,14 +328,16 @@ module.exports.deleteLoanById = async (req, res, next) => {
  *         
  */
 module.exports.exportLoan = async (req, res, next) => {
-	let [error, status] = await _p(loanCrud.exportLoan());
+	let [error, filePath] = await _p(loanCrud.exportLoan());
 
 	if(error) {
 		console.log(error);
 		return next(new Error('books loan access error'));
 	}
-	if(!status) {
-		return res.status(200).json(createResponse(null, 'books loan not found'));
+
+	if(!filePath) {
+		return res.status(200).json(createResponse(null, 'books loan data not found'));
 	}
-	return res.status(200).json(createResponse(status, 'books loan list export successfully'));
+
+	return res.download(filePath);
 };

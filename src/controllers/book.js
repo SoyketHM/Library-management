@@ -86,6 +86,9 @@ module.exports.createBook = async (req, res, next) => {
  *       - name: token
  *         description: User token
  *         in:  header
+ *       - name: author
+ *         in: query
+ *         description: The author id
  *     responses:
  *       200:
  *         description: OK

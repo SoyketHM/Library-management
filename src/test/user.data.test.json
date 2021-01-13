@@ -7,11 +7,20 @@
         "status": "active"
     },
     "update": {
-        "status": "inactive",
         "name": "Belayet Hossain"
     },
-    "login": {        
+    "login": {
         "email": "admin@gmail.com",
         "password": "admin"
+    },
+    "user": {
+        "id": "5fff22bc7ac31a07048cdd63",
+        "name": "Admin",
+        "type": "admin",
+        "status": "active"
+    },
+    "userLogin": {
+        "email": "belayet@gmail.com",
+        "password": "12345"
     }
 }

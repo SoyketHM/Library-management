@@ -16,14 +16,14 @@ let userId = null;
 let token = null;
 
 describe('User Test Suite', () => {
-    before(async () => { await User.deleteMany({}) });
+    // before(async () => { await User.deleteMany({}) });
 
     describe('Testing POST /login end point to pass', () => {
         it('should login as admin', async () => {            
             const [err, res] = await _p(chai.request(server)
             .post(`/login`)
             .send(userData.login));
-            
+
             token = res.body.data.token;
 
             assert.equal(res.status, 200, 'Http response code is 200');
@@ -52,7 +52,7 @@ describe('User Test Suite', () => {
             assert.isString(res.body.data.token, 'Token is string');
         });
     });
-    
+
     describe('Testing Get /api/users end point to pass', () => {
         it('should return all users', async () => {            
             const [err, res] = await _p(chai.request(server)
@@ -66,7 +66,8 @@ describe('User Test Suite', () => {
     		assert.isNull(res.body.message, 'Message should be null');
         });
     });
-    
+
+        
     describe('Testing Get /api/users/:id end point to pass', () => {
         it('should return a user', async () => {    
             const [err, res] = await _p(chai.request(server)
@@ -97,9 +98,34 @@ describe('User Test Suite', () => {
     		assert.exists(res.body.data.createdAt, 'createdAt exist');
     		assert.exists(res.body.data.updatedAt, 'updatedAt exist');
     		assert.equal(res.body.data.name, 'Belayet Hossain', 'User name updated');
-    		assert.equal(res.body.data.status, 'inactive', 'User status updated');
     	});
     });
-    
+
+    describe('Testing POST /login end point to pass', () => {
+        it('should login as user', async () => {            
+            const [err, res] = await _p(chai.request(server)
+            .post(`/login`)
+            .send(userData.userLogin));
+
+            token = res.body.data.token;
+
+            assert.equal(res.status, 200, 'Http response code is 200');
+            assert.isNull(err, 'Promise error is null');
+            assert.isFalse(res.body.error, 'Error is false');
+            assert.exists(res.body.data.token, 'Token is exist');
+            assert.isString(res.body.data.token, 'Token is string');
+        });
+    });
+
+    describe('Testing Get /api/users authorization check', () => {
+        it('should return 401 status', async () => {            
+            const [err, res] = await _p(chai.request(server)
+            .get(`/api/users`)
+            .set({ token }));
+
+            assert.equal(res.status, 401, 'Http response code is 401');
+        });
+    });
+
     after(async () => { await User.deleteMany({}) });
 });

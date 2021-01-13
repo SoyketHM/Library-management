@@ -171,7 +171,7 @@ module.exports.exportLoan = async () => {
 
 			wb.write(fileName + '.xlsx', function (err, stats) {
 				if (!err) {
-					return resolve(stats);
+					return resolve(fileName + '.xlsx');
 				} else {
 					return reject(err.message);
 				}

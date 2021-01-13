@@ -1,5 +1,6 @@
 const jwt = require('../helpers/jwt');
 const acl = require('../config/acl.json');
+const { createResponse }    = require('../utils/responseGenerate');
 
 const checkAuthorization = (payload, req) => {
 	let found = false;
@@ -25,10 +26,10 @@ module.exports.jwt = async function (req, res, next) {
 	}
 	// check token
 	const payload = await jwt.decode(token);
-	if (!payload) return next(new Error('auth_token_invalid'));
+	if (!payload) return res.status(401).send(createResponse(null,'auth_user_unauthorized', true));
 	// check authorization
 	const checkAuth = checkAuthorization(payload, req);
-	if (!checkAuth) return next(new Error('auth_user_unauthorized'));
+	if (!checkAuth) return res.status(401).send(createResponse(null,'auth_user_unauthorized', true));
 
 	req.user = payload;
 	next();

@@ -99,7 +99,8 @@ const jwt = require('../helpers/jwt');
  *         
  */
 module.exports.createUser = async (req, res, next) => {
-    if(req.file) req.body.photo = req.file.filename;
+    if(req.file) req.body.photo = `/uploads/${req.file.filename}`;
+    
     if (req.body.password) {
         const hashPass = await hash.new(req.body.password);
         req.body.password = hashPass;

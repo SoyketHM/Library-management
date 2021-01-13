@@ -1,0 +1,11 @@
+{
+    "create": {
+        "name": "The Knight One",
+        "author": "5ffc94f53714a109a48079ff",
+        "genre": "Travel"
+    },
+    "update": {
+        "name": "The Knight",
+        "genre": "Si-Fi"
+    }
+}
