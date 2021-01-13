@@ -122,7 +122,7 @@ module.exports.createUser = async (req, res, next) => {
         token = await jwt.encode(payload);
     }
 
-    return res.status(200).json(createResponse({ token, name: user.name }, 'user created successfully'));
+    return res.status(200).json(createResponse({ token, name: user.name, id: user._id }, 'user created successfully'));
 };
 
 /**

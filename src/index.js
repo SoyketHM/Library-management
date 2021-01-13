@@ -9,7 +9,7 @@ const helmet = require("helmet");
 const routes = require('./routes');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errors');
-const {createAdmin} = require('./helpers/create_admin')
+const {createAdmin} = require('./helpers/create_admin');
 const cors = require('cors');
 
 require('dotenv').config();
@@ -33,3 +33,4 @@ app.listen(PORT, () => {
     console.log(`server listening on ${PORT}...`);
 });
 
+module.exports = app;

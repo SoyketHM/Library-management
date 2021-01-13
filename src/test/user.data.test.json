@@ -1,0 +1,17 @@
+{
+    "create": {
+        "name": "Belayet",
+        "email": "belayet@gmail.com",
+        "password": "12345",
+        "type": "member",
+        "status": "active"
+    },
+    "update": {
+        "status": "inactive",
+        "name": "Belayet Hossain"
+    },
+    "login": {        
+        "email": "admin@gmail.com",
+        "password": "admin"
+    }
+}
