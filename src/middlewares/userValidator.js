@@ -4,7 +4,7 @@ module.exports.userValidator = [
 	check('name')
 		.optional().exists({ checkNull: true, checkFalsy: true }).withMessage('Name can\'t be empty').bail().isString().withMessage('Name must be a string'),
     check('email')
-		.optional().exists({ checkNull: true, checkFalsy: true }).bail().isString().withMessage('Email must be a string'),
+		.optional().exists({ checkNull: true, checkFalsy: true }).bail().isEmail().isString().withMessage('Email must be a string'),
     check('password')
 		.optional().exists({ checkNull: true, checkFalsy: true }).bail().isString().withMessage('Password must be a string'),
 	check('type')
@@ -17,7 +17,7 @@ module.exports.userValidator = [
 
 module.exports.loginValidator = [
 	check('email')
-        .exists({ checkNull: true, checkFalsy: true }).bail().isString().withMessage('Email must be a string'),
+        .exists({ checkNull: true, checkFalsy: true }).bail().isEmail().isString().withMessage('Email must be a string'),
     check('password')
         .exists({ checkNull: true, checkFalsy: true }).bail().isString().withMessage('Password must be a string'),
 ];
