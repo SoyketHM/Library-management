@@ -3,7 +3,7 @@ const _p = require('../helpers/simpleasync');
 const hash = require('./password_hash');
 
 //create user
-module.exports.createAdmin = async () => {
+(async () => {
     const [error, admin] = await _p(User.findOne({ email: "admin@gmail.com" }));
     if (!admin) {
         const hashPass = await hash.new('admin');
@@ -28,4 +28,4 @@ module.exports.createAdmin = async () => {
 
     console.log('admin already exists');
     return;
-};
+})()

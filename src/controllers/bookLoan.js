@@ -321,9 +321,7 @@ module.exports.deleteLoanById = async (req, res, next) => {
  *         examples: 
  *           application/json: 
  *             { 
- *               "error": false,
- *               "data": null,
- *               "message": "books loan list export successfully"
+ *               "Download file link"
  *             } 
  *         
  */
